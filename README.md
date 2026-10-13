@@ -80,7 +80,7 @@ Settings are changed in the menu and saved automatically to `BepInEx/config/loca
 Requirements: Windows, the [.NET SDK](https://dotnet.microsoft.com/download) (8 or newer; developed with 9.0), the game installed, and BepInEx 5 installed in the game folder.
 
 ```powershell
-git clone <this repository>
+git clone https://github.com/xKHl/super-battle-golf-mod-menu.git
 cd super-battle-golf-mod-menu
 .\build.ps1                                   # uses the default Steam path
 .\build.ps1 -GameDir "D:\SteamLibrary\steamapps\common\Super Battle Golf"
