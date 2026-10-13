@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>SbgMod</AssemblyName>
+    <RootNamespace>SbgMod</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\</OutputPath>
+    <!-- Override with: dotnet build -p:GameDir="D:\...\Super Battle Golf" -->
+    <GameDir Condition="'$(GameDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Super Battle Golf</GameDir>
+    <Managed>$(GameDir)\Super Battle Golf_Data\Managed</Managed>
+    <!-- BepInEx 5 must be installed in the game folder; its DLLs are referenced from there, not shipped in this repo. -->
+    <BepInExCore Condition="'$(BepInExCore)' == ''">$(GameDir)\BepInEx\core</BepInExCore>
+    <NoWarn>$(NoWarn);CS0436;MSB3277;CS1701;CS1702</NoWarn>
+  </PropertyGroup>
+
+  <Target Name="CheckGameDir" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(Managed)\GameAssembly.dll')" Text="Game not found at '$(GameDir)'. Pass -p:GameDir=&quot;...\Super Battle Golf&quot;." />
+    <Error Condition="!Exists('$(BepInExCore)\BepInEx.dll')" Text="BepInEx 5 not found at '$(BepInExCore)'. Install BepInEx 5 (Mono x64) into the game folder first." />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx" HintPath="$(BepInExCore)\BepInEx.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(BepInExCore)\0Harmony.dll" Private="false" />
+    <!-- Game code: publicized so private members are checked at compile time -->
+    <Reference Include="GameAssembly" HintPath="$(Managed)\GameAssembly.dll" Private="false" Publicize="true" />
+    <Reference Include="SharedAssembly" HintPath="$(Managed)\SharedAssembly.dll" Private="false" Publicize="true" />
+    <ManagedLib Include="$(Managed)\*.dll" Exclude="$(Managed)\GameAssembly.dll;$(Managed)\SharedAssembly.dll;$(Managed)\mscorlib.dll;$(Managed)\netstandard.dll;$(Managed)\System*.dll;$(Managed)\Mono.*.dll" />
+    <Reference Include="@(ManagedLib)" Private="false" />
+  </ItemGroup>
+</Project>

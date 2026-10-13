@@ -1,0 +1,34 @@
+Super Battle Golf Mod Menu
+==========================
+
+Requires: Super Battle Golf (tested on 1.3.0-724) and BepInEx 5.4.23.5, Mono, win x64.
+BepInEx is NOT included in this ZIP.
+
+Install
+-------
+1. Install BepInEx 5.4.23.5 (win x64) from https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5
+   Unpack it into the game folder so winhttp.dll and the BepInEx folder sit next to "Super Battle Golf.exe".
+2. Start the game once and close it.
+3. Unpack this ZIP into the game folder. The file must end up at:
+      <game folder>\BepInEx\plugins\SbgMod\SbgMod.dll
+4. Start the game and press F6.
+
+Update
+------
+Close the game and replace BepInEx\plugins\SbgMod\SbgMod.dll with the new file. Settings are kept.
+
+Remove
+------
+Delete the folder BepInEx\plugins\SbgMod.
+To remove the settings as well, delete BepInEx\config\local.sbgmod.cfg.
+
+Default keys
+------------
+F6 menu, F7 ball teleport, F8 ball recall, F9 auto hole, F10 cup snap,
+F4 player speed toggle, F5 reset speedrun, hold Left Alt for weapon aim assist.
+All keys can be changed in the Settings tab.
+
+Help
+----
+If F6 does nothing, look for "SBG Mod Menu" in BepInEx\LogOutput.log.
+Full documentation: see the README of the project repository.

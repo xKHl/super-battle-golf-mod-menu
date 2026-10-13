@@ -1,0 +1,26 @@
+{
+  "name": "SbgModMenu",
+  "display_name": "Super Battle Golf Mod Menu",
+  "version_number": "1.0.0",
+  "plugin_guid": "local.sbgmod",
+  "plugin_file": "BepInEx/plugins/SbgMod/SbgMod.dll",
+  "description": "In-game mod menu for Super Battle Golf: hole assist, ball tools, weapon aim assist, weapon options, player speed, speedrun timer and visual aids.",
+  "game": {
+    "name": "Super Battle Golf",
+    "tested_version": "1.3.0-724",
+    "engine": "Unity 6000.3.10f1 (Mono)"
+  },
+  "loader": {
+    "name": "BepInEx",
+    "version": "5.4.23.5",
+    "variant": "Mono, win x64"
+  },
+  "dependencies": [
+    "BepInEx 5.4.23.5 (provides HarmonyX 0Harmony.dll)"
+  ],
+  "build_dependencies": [
+    ".NET SDK 8 or newer",
+    "BepInEx.AssemblyPublicizer.MSBuild 0.4.3 (NuGet, build time only)",
+    "The game's own Managed assemblies, referenced from a local installation"
+  ]
+}

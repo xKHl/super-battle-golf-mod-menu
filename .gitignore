@@ -1,0 +1,28 @@
+# Build output and intermediates
+bin/
+obj/
+dist/
+release/
+*.user
+*.suo
+
+# Local copies of third-party / game binaries: reference them from your own install instead
+lib/
+*.dll
+*.exe
+*.pdb
+
+# IDE and OS
+.vs/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# Logs, local config, test output
+*.log
+*.log.*
+*.cfg
+*.cmd
+*.zip
+*.png
